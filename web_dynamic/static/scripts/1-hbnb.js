@@ -1,17 +1,16 @@
 $(document).ready(function () {
-    $('input[type=checkbox]').click(function () {
-      const myListName = [];
-      const myId = [];
-      $('input[type=checkbox]:checked').each(function () {
-        myListName.push($(this).attr('data-name'));
-        myId.push($(this).attr('data-id'));
-      });
-      if (myListName.length === 0) {
-        $('.amenities h4').html('&nbsp;');
-      } else {
-        $('.amenities h4').text(myListName.join(', '));
-      }
-      console.log(myId);
-    });
+  let amenities = {};
+  $(document).on('change', "input[type='checkbox']", function () {
+    if (this.checked) {
+      amenities[$(this).data('id')] = $(this).data('name');
+    } else {
+      delete amenities[$(this).data('id')];
+    }
+    let list = Object.values(amenities);
+    if (list.length > 0) {
+      $('div.amenities h4').text(Object.values(amenities).join(', '));
+    } else {
+      $('div.amenities h4').html('&nbsp');
+    }
   });
-  
+});
