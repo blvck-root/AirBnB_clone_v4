@@ -27,7 +27,7 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER =  getenv('HBNB_MYSQL_USER')
+        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
         HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
         HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
         HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
@@ -42,7 +42,6 @@ class DBStorage:
 
     def all(self, cls=None):
         """query on the current database session"""
-        print("come home")
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
